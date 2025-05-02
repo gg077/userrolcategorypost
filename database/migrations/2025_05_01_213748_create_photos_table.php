@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();//auteur van de post
-            $table->string('title');
-            $table->text('content');
-            $table->string('slug')->unique();
-            $table->boolean('is_published')->default(false);
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->string('path');
+            $table->string('alternate_text')->nullable();
             $table->timestamps();
-            $table->softDeletes();
-
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('photos');
     }
 };

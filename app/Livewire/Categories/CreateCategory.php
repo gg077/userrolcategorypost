@@ -5,6 +5,8 @@ namespace App\Livewire\Categories;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Str; // Bovenaan toevoegen
+
 
 class CreateCategory extends Component
 {
@@ -16,22 +18,20 @@ class CreateCategory extends Component
 
     public function save()
     {
-        //$user = Auth::user();
-        //if (!$user->can('create categories')) {
-        //    abort(403);
-       // }
-
-        $this->validate();
-
-        Category::create([
-            'name' => $this->name
+        $this->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
         ]);
 
-        session()->flash('message', __('Categorie succesvol aangemaakt.'));
-        session()->flash('message_type', 'success');
+        \App\Models\Category::create([
+            'name' => $this->name,
+            'slug' => Str::slug($this->name), // 👈 DIT IS WAT ONTBREEKT !!!
+        ]);
+
+        session()->flash('success', 'Categorie toegevoegd!');
 
         return redirect()->route('categories.index');
     }
+
 
     public function render()
     {

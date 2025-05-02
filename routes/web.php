@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\Product\CreateProduct;
+use App\Livewire\Product\EditProduct;
+use App\Livewire\Product\ShowProducts;
 use App\Livewire\Users\ShowUsers;
 use App\Livewire\Users\CreateUser;
 use App\Livewire\Users\EditUser;
@@ -28,16 +31,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/roles/create', \App\Livewire\Roles\CreateRole::class)->name('roles.create');
     Route::get('/roles/{role}/edit', \App\Livewire\Roles\EditRole::class)->name('roles.edit');
 
-    // posts routes
-    Route::get('/posts', \App\Livewire\Posts\ShowPosts::class)->name('posts.index');
-    Route::get('/posts/create', \App\Livewire\Posts\CreatePosts::class)->name('posts.create');
-    Route::get('/posts/{post}/edit', \App\Livewire\Posts\EditPosts::class)->name('posts.edit');
-
-
     // Category routes
     Route::get('/categories', \App\Livewire\Categories\ShowCategory::class)->name('categories.index');
     Route::get('/categories/create', \App\Livewire\Categories\CreateCategory::class)->name('categories.create');
     Route::get('/categories/{category}/edit', \App\Livewire\Categories\EditCategory::class)->name('categories.edit');
+
+    Route::get('/products', ShowProducts::class)->name('products.index');
+    Route::get('/products/create', CreateProduct::class)->name('products.create');
+    Route::get('/products/{product}/edit', EditProduct::class)->name('products.edit');
 });
 
 require __DIR__.'/auth.php';

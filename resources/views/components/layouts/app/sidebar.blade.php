@@ -43,12 +43,12 @@
                 {{ __('Categories') }}
             </flux:navlist.item>
             <flux:navlist.item
-                icon="book-open-text"
-                :href="route('posts.index')"
-                :current="request()->routeIs('posts.index')"
+                icon="tag"
+                :href="route('products.index')"
+                :current="request()->routeIs('products.index')"
                 wire:navigate
             >
-                {{ __('Posts') }}
+                {{ __('Producten') }}
             </flux:navlist.item>
 
             <flux:spacer />

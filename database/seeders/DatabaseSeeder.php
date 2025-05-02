@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             CategorySeeder::class,
-            PostSeeder::class,
+            ProductSeeder::class,
         ]);
 
         // Dan de permissions aanmaken en toekennen
