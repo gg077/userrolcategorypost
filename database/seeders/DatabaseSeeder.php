@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
+            OrderSeeder::class,
+            OrderItemSeeder::class
         ]);
 
         // Dan de permissions aanmaken en toekennen

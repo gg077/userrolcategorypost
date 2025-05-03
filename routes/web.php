@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Orders\OrderList;
 use App\Livewire\Product\CreateProduct;
 use App\Livewire\Product\EditProduct;
 use App\Livewire\Product\ShowProducts;
@@ -39,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products', ShowProducts::class)->name('products.index');
     Route::get('/products/create', CreateProduct::class)->name('products.create');
     Route::get('/products/{product}/edit', EditProduct::class)->name('products.edit');
+
+    Route::get('/order-list', OrderList::class)->name('orders.index');
+
 });
 
 require __DIR__.'/auth.php';
